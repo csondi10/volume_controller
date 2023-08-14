@@ -30,6 +30,9 @@ class VolumeController {
     return _instance!;
   }
 
+  Stream<double> get stream =>
+      _eventChannel.receiveBroadcastStream().map((d) => d as double);
+
   /// This method listen to the system volume. The volume value will be generated when the volume was changed.
   StreamSubscription<double> listener(Function(double)? onData) {
     _volumeListener = _eventChannel
