@@ -74,7 +74,8 @@ public class VolumeListener: NSObject, FlutterStreamHandler {
 
     @objc func audioSessionObserver(){
         do {
-            try audioSession.setCategory(AVAudioSession.Category.playback)
+            try audioSession.setCategory(AVAudioSession.Category.playback,
+                                         options:  AVAudioSession.CategoryOptions.mixWithOthers)
             try audioSession.setActive(true)
             if !isObserving {
                 audioSession.addObserver(self,
